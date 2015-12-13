@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<script type="text/javascript" src="js/contextmenu.js"></script>
+<script type="text/javascript">
+window.onload = function() {	
+
+	//Sample use
+	var context = cMenu.init('contextMenu'); //Creates contextmenu
+
+	//Adds subelements
+	cMenu.addChild('Disabled', context, function() {
+		alert('Testing disabled child');	
+	}).disabled(true);
+		
+	//Adds submenus
+	var submenu = cMenu.addSubMenu('Test', context);
+		cMenu.addChild('Testing', submenu, function() {
+			document.body.bgColor="#ffffff";	
+		});
+		cMenu.addChild('Press for compliment', submenu, function() {
+			alert('Awesome, you are a good clicker');
+		});
+		
+		var anotherSub = cMenu.addSubMenu('AnotherSub', submenu);
+			cMenu.addChild('Change BG-color', anotherSub, doShit);	
+		
+		cMenu.addChild('Print', submenu, function() {
+			window.print();	
+		});
+		cMenu.addChild('Press for epic win', submenu, function() {
+		alert('Very epic win!');
+		});
+		
+		cMenu.addChild('Print', submenu, function() {
+			window.print();	
+		});
+		
+		
+	var thirdSub = cMenu.addSubMenu('ThirdSub', anotherSub);
+		cMenu.addChild('Siste', thirdSub, function() {
+			alert('Siste nivÃ¥');
+		});	
+		cMenu.addChild('SisteElement', thirdSub, function() {
+			alert('Siste element');
+		});
+	
+	cMenu.addChild('Press for epic win', context, function() {
+		alert('Very epic win!');
+	});
+	
+	cMenu.addChild('Print', context, function() {
+		window.print();	
+	});
+	
+	
+	function doShit(){
+		document.body.bgColor="#23489d";
+	}
+		
+	//NY MENY	
+	//var testMenu = new GMenu;
+	var context = cMenu.init('newMenu');
+		
+	cMenu.addChild('Fun menu item', context, function() {	
+		alert('Wohoo');	
+	});		
+	
+}//onload	
+
+</script>
+
+</head>
+
+<body>
+
+<p>Right click on the boxes to see the context menu</p>
+<!-- Just some divs for testing -->
+<div style="width:100px; height:100px; background-color:#ccc;" id="contextMenu">Text</div>
+<br />
+<div style="width:100px; height:100px; background-color:#0C3;" id="newMenu">Test</div>
+
+
+</body>
+</html>
